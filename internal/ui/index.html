@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Duo Reader</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23315c46'/%3E%3Cpath d='M7 7h7v18H7zm11 0h7v18h-7z' fill='%23f8f9f5'/%3E%3C/svg%3E"><link rel="stylesheet" href="/style.css"></head>
+<body>
+<header>
+ <button id="libraryBtn" class="brand" title="Библиотека">◫ <span>DUO <b>READER</b></span></button>
+ <div class="title"><span id="bookName">Две страницы. Одно пространство.</span><small id="screenLabel">Библиотека</small></div>
+ <button id="openBtn" title="Открыть книгу · Ctrl+O">Открыть</button>
+ <button id="fullBtn" title="Полноэкранный режим · F11">⛶</button>
+</header>
+<nav id="tools" hidden>
+ <div class="segmented"><button id="spreadBtn">Разворот</button><button id="scrollBtn">Прокрутка</button></div>
+ <button id="outlineBtn" title="Оглавление">☷</button>
+ <input id="searchInput" type="search" placeholder="Найти в книге…" aria-label="Поиск в книге"><button id="searchBtn" title="Найти следующее совпадение">Найти</button>
+ <button id="zoomOut" title="Уменьшить">−</button><button id="fitBtn">Вписать</button><button id="zoomIn" title="Увеличить">+</button>
+ <button id="rotateBtn" title="Повернуть PDF">↻</button>
+ <button id="fontDown" title="Уменьшить шрифт">A−</button><button id="fontUp" title="Увеличить шрифт">A+</button>
+ <span class="spacer"></span>
+ <button id="coverBtn" title="Показывать обложку отдельно">Обложка</button>
+ <button id="rtlBtn" title="Чтение справа налево">RTL</button>
+ <button id="swapBtn" title="Обменять левую и правую страницы">⇄</button>
+ <button id="themeBtn" title="Сменить тему">◐</button>
+ <button id="bookmarkBtn" title="Закладка на текущей странице">☆</button>
+</nav>
+<main id="workspace">
+ <section id="library">
+  <div class="eyebrow">ВАША БИБЛИОТЕКА</div><h1>Больше места<br>для хороших книг.</h1>
+  <p class="intro">Книга на двух экранах — как открытый разворот.<br>Выберите файл из библиотеки или добавьте свой.</p>
+  <button id="addBtn" class="primary">+ Открыть книгу</button>
+  <div class="sectionTitle">На книжной полке <span>PDF · EPUB · FB2 · FB3</span></div>
+  <div id="shelf"></div><p id="emptyShelf" hidden>В каталоге books пока нет книг. Откройте файл с компьютера.</p>
+  <p class="hint">По умолчанию: экран Windows №1 — левый, №2 — правый.<br>Если доступен один экран, обе страницы появятся в одном окне.</p>
+ </section>
+ <section id="reader" hidden><div id="pages"></div><div id="staging" aria-hidden="true"></div><div id="busy" hidden>Готовим страницы…</div></section>
+ <aside id="outline" hidden><div class="asideHeader"><strong>Оглавление и закладки</strong><button id="closeOutline">×</button></div><div id="chapters"></div><div id="marks"></div></aside>
+</main>
+<footer id="footer" hidden>
+ <span id="formatBadge">PDF</span><span id="status" role="status">Готово</span><span class="spacer"></span>
+ <button id="previous" title="Предыдущие страницы · ←">←</button>
+ <label><input id="pageInput" type="number" min="1" value="1" aria-label="Текущая страница"> <span id="pageTotal">/ —</span></label>
+ <button id="next" title="Следующие страницы · →">→</button><span class="spacer"></span><span id="pairLabel"></span>
+</footer>
+<div id="toast" role="alert" hidden></div>
+<input id="fileInput" type="file" accept=".pdf,.epub,.fb2,.fb2.zip,.fb3" hidden>
+<dialog id="passwordDialog"><form method="dialog"><h2>PDF защищён паролем</h2><p>Пароль используется только для открытой книги.</p><input id="passwordInput" type="password" autocomplete="off" required><div><button value="cancel" formnovalidate>Отмена</button><button value="ok" class="primary">Открыть</button></div></form></dialog>
+<script type="module" src="/app.js"></script>
+</body></html>

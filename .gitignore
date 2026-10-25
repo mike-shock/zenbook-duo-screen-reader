@@ -1,0 +1,7 @@
+/books/
+/dist/
+/test-session/
+*.log
+/.agents/
+/.codex/
+/.aws/
